@@ -27,9 +27,9 @@ public class MainActivity extends AppCompatActivity {
                 Button send = (Button) findViewById(R.id.send);
                 TextView info = (TextView) findViewById(R.id.info);
                 TextView secret = (TextView) findViewById(R.id.secret);
+                EditText number = (EditText) findViewById(R.id.number);
                 secret.setText("秘密數字" + String.valueOf(num));
                 while (true) {
-                    EditText number = (EditText) findViewById(R.id.number);
                     String w = number.getText().toString();
                     int numbernumber = Integer.parseInt(w);
                     if (numbernumber > num) {
