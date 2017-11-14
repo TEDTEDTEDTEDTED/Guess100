@@ -1,5 +1,6 @@
 package com.example.user.guess100;
 
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,12 +17,39 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-          findViews();
-
-
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
+        findViews();
+        Button send =(Button) findViewById(R.id.send);
+        send.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                int num = (int) (Math.random() * 100) + 1;
+                Button send = (Button) findViewById(R.id.send);
+                TextView info = (TextView) findViewById(R.id.info);
+                TextView secret = (TextView) findViewById(R.id.secret);
+                secret.setText("秘密數字" + String.valueOf(num));
+                while (true) {
+                    EditText number = (EditText) findViewById(R.id.number);
+                    String w = number.getText().toString();
+                    int numbernumber = Integer.parseInt(w);
+                    if (numbernumber > num) {
+                        new AlertDialog.Builder(MainActivity.this)
+                                .setMessage(0 + "to" + numbernumber)
+                                .show();
+                    }
+                    if (numbernumber < num) {
+                        new AlertDialog.Builder(MainActivity.this)
+                                .setMessage(numbernumber + "to" + 100)
+                                .show();
+                    }
+                    if (numbernumber == num) {
+                        break;
+                    }
+
+
+                }
+            }
+        });
+        }
+
 }
